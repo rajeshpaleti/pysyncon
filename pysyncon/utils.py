@@ -351,4 +351,4 @@ class PlaceboTest:
         return sum(
             rmspe.drop(index=self.treated_gap.name) >= rmspe.loc[self.treated_gap.name]
         ) / len(rmspe)
-        #return 1500
+        return 1500
