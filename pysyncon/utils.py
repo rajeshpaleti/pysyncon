@@ -342,12 +342,12 @@ class PlaceboTest:
         all_ = pd.concat([self.gaps, self.treated_gap], axis=1)
 
         denom = all_.loc[:treatment_time].pow(2).sum(axis=0)
-        num = all_.loc[treatment_time:].pow(2).sum(axis=0)
+        num = all_.loc[treatment_time+3:].pow(2).sum(axis=0)
 
         t, _ = self.gaps.shape
         t0, _ = self.gaps.loc[:treatment_time].shape
 
-        rmspe = (num / (t - t0)) / (denom / t0)
+        rmspe = (num) / (denom / t0)
         return sum(
             rmspe.drop(index=self.treated_gap.name) >= rmspe.loc[self.treated_gap.name]
         ) / len(rmspe)
